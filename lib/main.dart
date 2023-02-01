@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           onPressed: () {
             fetchData();
           },
-          child: Text('post data'),
+          child: Text('Post data'),
         ),
       )),
     );
@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
 void fetchData() async {
   var dio = Dio();
   // var response = await dio.get("https://jsonplaceholder.typicode.com/todos/1");
+
   var response = await dio.post("https://jsonplaceholder.typicode.com/posts",
       data: {'name': 'hafeed', 'email': 'hafeed@gmail'});
 
