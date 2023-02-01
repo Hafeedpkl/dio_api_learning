@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
             // postData();
             // getPostData();
             // putData();
-            patchData();
+            // patchData();
+            deleteData();
           },
           child: Text('data'),
         ),
@@ -87,4 +88,15 @@ void patchData() async {
       data: {'name': 'hafeed'});
   print(response.data);
   print(response2.data);
+}
+
+void deleteData() async {
+  var dio = Dio();
+  var response = await dio.get("https://jsonplaceholder.typicode.com/todos/2");
+  var deleteResponse =
+      await dio.delete("https://jsonplaceholder.typicode.com/todos/2");
+  print(response.statusCode);
+  print(response.data);
+  print(deleteResponse.statusCode);
+  print(deleteResponse.data);
 }
