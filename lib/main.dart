@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
             // postData();
             // getPostData();
             // putData();
+            patchData();
           },
           child: Text('data'),
         ),
@@ -73,4 +74,17 @@ void putData() async {
       data: {'name': 'hafeed', 'email': 'hafeedp@gmail.com'});
 
   print(response.data);
+}
+//! PUT is used to completely replace a resource on the server with new data, whereas PATCH is used to partially update a resource on the server.
+
+void patchData() async {
+//! data into existing data
+
+  var dio = Dio();
+  var response = await dio.get("https://jsonplaceholder.typicode.com/todos/1");
+  var response2 = await dio.patch(
+      "https://jsonplaceholder.typicode.com/todos/1",
+      data: {'name': 'hafeed'});
+  print(response.data);
+  print(response2.data);
 }
