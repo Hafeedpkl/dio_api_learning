@@ -32,11 +32,13 @@ class MyApp extends StatelessWidget {
 
 void fetchData() async {
   var dio = Dio();
-  // var response = await dio.get("https://jsonplaceholder.typicode.com/todos/1");
+  // var response = await dio.get("");
 
-  var response = await dio.post("https://jsonplaceholder.typicode.com/posts",
-      data: {'name': 'hafeed', 'email': 'hafeed@gmail'});
-
-  print(response.statusCode);
-  print(response.data.toString());
+  var response = await Future.wait([
+    dio.get("https://jsonplaceholder.typicode.com/posts/1"),
+    dio.post("https://jsonplaceholder.typicode.com/posts"),
+  ]);
+  print(response.length);
+  print(response[0].data);
+  print(response[1].data);
 }
